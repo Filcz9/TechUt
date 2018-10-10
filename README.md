@@ -1,1 +1,2 @@
-# TechUt
+Filip Czyż
+Technologie Java
