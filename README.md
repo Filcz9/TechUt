@@ -1,2 +1,2 @@
 Filip Czyż </br>
-Technologie Java
+Technologie utrwalania danych: Java
