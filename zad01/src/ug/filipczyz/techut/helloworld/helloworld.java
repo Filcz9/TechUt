@@ -1,6 +1,6 @@
 package ug.filipczyz.techut.helloworld;
 
-public class Main {
+public class Helloworld {
 
     public static void main(String[] args) {
 
