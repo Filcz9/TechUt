@@ -13,7 +13,6 @@ public class Genre {
 	{
 		super();
 		this.genre = genre;
-
 	}
 	public long getId() {
 		return id;

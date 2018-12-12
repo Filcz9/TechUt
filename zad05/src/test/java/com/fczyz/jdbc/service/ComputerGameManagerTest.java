@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.fczyz.jdbcdemo.domain.ComputerGame;
+import com.fczyz.domain.ComputerGame;
 import com.fczyz.jdbcdemo.service.ComputerGameManagerJDBC;
 
 public class ComputerGameManagerTest {

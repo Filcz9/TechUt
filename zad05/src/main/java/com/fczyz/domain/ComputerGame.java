@@ -1,15 +1,26 @@
-package com.fczyz.jdbcdemo.domain;
-
+package com.fczyz.domain;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+
+
 @Entity
 @NamedQueries({
-		@NamedQuery(name = "car.unsold", query = "Select c from Car c where c.sold = false")
+		@NamedQuery(name = "computergame.all", query = "Select all from ComputerGame all")
 })
 public class ComputerGame {
 	private long id;
@@ -18,21 +29,13 @@ public class ComputerGame {
 	private Double price;
 	private Boolean multiplayer;
 	
-	public ComputerGame()
-	{		
-	}
-	public ComputerGame(String title, String release, Double price, Boolean multiplayer)
-	{
-		super();
-		this.title = title;
-		this.release = release;
-		this.price = price;
-		this.multiplayer = multiplayer;
-	}
-	public long getId() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getTitle() {
@@ -62,5 +65,12 @@ public class ComputerGame {
 	public void setMultiplayer(Boolean multiplayer)
 	{
 		this.multiplayer = multiplayer;
+	}
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	public List<Review> getRewievs() {
+		return reviews;
+	}
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 }
