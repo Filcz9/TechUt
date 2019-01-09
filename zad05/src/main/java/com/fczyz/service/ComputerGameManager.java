@@ -13,14 +13,10 @@ public interface ComputerGameManager {
 	public List<ComputerGame> getAllComputerGames();
 	ComputerGame findByTitle(String title);
 	public void deleteComputerGame(ComputerGame computergame);
-	public void addAllComputerGames(List<ComputerGame> computergames);
+	public void updateComputerGame(ComputerGame computergames);
+	public void clearTable();
 	//public void findByName(String name);
 	//public void findOlderThan(Date string);
-	Long addReview(Review review);
-	List<Review> getPositiveReview();
-	void deleteReview(ComputerGame computergame, Review review);
-	Review findReviewById(Long id);
-
 	//List<Review> getOwnedCars(Person person);
 	//void sellCar(Long personId, Long carId);
 }

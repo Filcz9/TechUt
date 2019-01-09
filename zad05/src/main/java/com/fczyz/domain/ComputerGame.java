@@ -13,9 +13,13 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -28,6 +32,9 @@ public class ComputerGame {
 	private String release;
 	private Double price;
 	private Boolean multiplayer;
+	private Set<Review> reviews = new HashSet<Review>();
+	private Developer developer;
+	private ActivationKey key;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -66,11 +73,30 @@ public class ComputerGame {
 	{
 		this.multiplayer = multiplayer;
 	}
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	public List<Review> getRewievs() {
+
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+	public Developer getDeveloper() {
+		return developer;
+}
+	public void setDeveloper(Developer developer) {
+		this.developer = developer;
+}
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+	public Set<Review> getReviews() {
 		return reviews;
 	}
-	public void setReviews(List<Review> reviews) {
+
+	public void setOwners(Set<Review> reviews) {
 		this.reviews = reviews;
-	}
 }
+
+	@OneToOne(cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+	public ActivationKey getActivationKey() {
+		return key;
+	}
+
+	public void setActivationKey(ActivationKey key) {
+		this.key = key;
+}
+}
+
